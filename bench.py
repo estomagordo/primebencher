@@ -7,7 +7,7 @@ def bench(function, name, exp, repeats=3):
     now = time()
 
     for x in range(1, repeats + 1):
-        res = function(10**exp)
+        _ = function(10**exp)
         taken = time() - now
         now = time()
 
