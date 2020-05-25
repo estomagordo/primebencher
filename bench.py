@@ -4,7 +4,7 @@ import pathlib
 import primes
 
 
-def main():
+def main(repeats=3):
     currdir = pathlib.Path(__file__).parent.absolute()
     plotdir = os.path.join(currdir, 'plotput')
 
@@ -24,10 +24,15 @@ def main():
         
         for exp in range(1, 9):
             n = 10**exp
-            now = time()
-            function(n)
-            ys.append(time() - now)
+            cumtime = 0.0
+
+            for _ in range(repeats):
+                now = time()
+                function(n)
+                cumtime += time() - now
+
             xs.append(n)
+            ys.append(cumtime / repeats)
 
         with open(filename, 'w') as f:
             f.write(' '.join(str(x) for x in xs))
