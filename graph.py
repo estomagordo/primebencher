@@ -8,6 +8,9 @@ def main():
 
     plt.xscale("log")
     plt.yscale("log")
+    plt.xlabel('N')
+    plt.ylabel('Seconds')
+    plt.title('Time required to generate all primes < N for some algorithms')
 
     for _, _, files in os.walk(plotdir):
         for filename in files:
