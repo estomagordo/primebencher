@@ -18,6 +18,8 @@ def bench(function, name, exp, repeats=3):
 def main():
     bench(sieve_of_eratosthenes, 'Sieve of Eratosthenes', 6)
     bench(sieve_of_eratosthenes, 'Sieve of Eratosthenes', 7)
+    bench(sieve_of_atkin, 'Sieve of Atkin', 6)
+    bench(sieve_of_atkin, 'Sieve of Atkin', 7)
     bench(all_odd_to_sqrt, 'All odd up to square root', 6)
     bench(all_odd_to_sqrt, 'All odd up to square root', 7)
     bench(all_6k_plus_minus_1, 'All 6k +-1 up to square root', 6)

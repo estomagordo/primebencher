@@ -19,3 +19,9 @@ def test_correctness_all_6k_plus_minus_1():
     res_below50 = all_6k_plus_minus_1(50)
 
     assert(res_below50 == below50)
+
+
+def test_correctness_sieve_of_atkin():
+    res_below50 = sieve_of_atkin(50)
+
+    assert(res_below50 == below50)
