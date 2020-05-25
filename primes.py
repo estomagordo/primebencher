@@ -18,10 +18,10 @@ def sieve_of_eratosthenes(n):
 
 def all_odd_to_sqrt(n):
     if n < 2:
-        return []
+        return set()
 
     if n == 2:
-        return [2]
+        return { 2 }
     
     primes = [2, 3]
 
@@ -44,10 +44,10 @@ def all_odd_to_sqrt(n):
 
 def all_6k_plus_minus_1(n):
     if n < 2:
-        return []
+        return set()
 
     if n == 2:
-        return [2]
+        return { 2 }
     
     primes = [2, 3]
 
