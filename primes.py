@@ -37,8 +37,8 @@ def all_odd_to_sqrt(n):
                 break
 
         if isprime:
-            primes.append(prime)
-
+            primes.append(candidate)
+            
     return set(primes)
 
 
