@@ -166,3 +166,38 @@ def sieve_of_atkin(n):
             mult += 2
 
     return primes
+
+
+def all_6k_plus_minus_1_single_looping(n):
+    if n < 2:
+        return set()
+
+    if n == 2:
+        return { 2 }
+    
+    primes = [2, 3]
+
+    candidate = 5
+    tries = 0
+
+    while candidate < n:
+        isprime = True
+
+        for prime in primes:
+            if prime * prime > candidate:
+                break
+
+            if candidate % prime == 0:
+                isprime = False
+                break
+
+        if isprime:
+            primes.append(candidate)
+
+        candidate += 2
+        tries += 1
+
+        if tries % 2 == 0:
+            candidate += 2
+
+    return set(primes)
