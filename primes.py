@@ -166,5 +166,3 @@ def sieve_of_atkin(n):
             mult += 2
 
     return primes
-
-print(sieve_of_atkin(10**6) - sieve_of_eratosthenes(10**6))
