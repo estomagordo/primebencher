@@ -1,29 +1,38 @@
 from time import time
-from primes import *
-
-
-def bench(function, name, exp, repeats=3):
-    print(f'Running {name} on 10^{exp} elements, {repeats} times.')
-    now = time()
-
-    for x in range(1, repeats + 1):
-        _ = function(10**exp)
-        taken = time() - now
-        now = time()
-
-        print(f'Run number {x}: {round(taken, 4)}s')
-        print()
+import os
+import pathlib
+import primes
 
 
 def main():
-    bench(sieve_of_eratosthenes, 'Sieve of Eratosthenes', 7)
-    bench(sieve_of_eratosthenes, 'Sieve of Eratosthenes', 8)
-    bench(sieve_of_atkin, 'Sieve of Atkin', 7)
-    bench(sieve_of_atkin, 'Sieve of Atkin', 8)
-    bench(all_odd_to_sqrt, 'All odd up to square root', 7)
-    bench(all_odd_to_sqrt, 'All odd up to square root', 8)
-    bench(all_6k_plus_minus_1, 'All 6k +-1 up to square root', 7)
-    bench(all_6k_plus_minus_1, 'All 6k +-1 up to square root', 8)
+    currdir = pathlib.Path(__file__).parent.absolute()
+    plotdir = os.path.join(currdir, 'plotput')
+
+    if not os.path.exists(plotdir):
+        os.mkdir(plotdir)
+
+    functions = [f for _, f in primes.__dict__.items() if callable(f)]
+
+    for function in functions:
+        filename = os.path.join(currdir, 'plotput', function.__name__ + '.dat')
+
+        if os.path.exists(filename):
+            continue
+
+        xs = []
+        ys = []
+        
+        for exp in range(1, 9):
+            n = 10**exp
+            now = time()
+            function(n)
+            ys.append(time() - now)
+            xs.append(n)
+
+        with open(filename, 'w') as f:
+            f.write(' '.join(str(x) for x in xs))
+            f.write('\n')
+            f.write(' '.join(str(y) for y in ys))
 
 if __name__ == '__main__':
     main()
