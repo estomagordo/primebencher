@@ -201,3 +201,27 @@ def all_6k_plus_minus_1_single_looping(n):
             candidate += 2
 
     return set(primes)
+
+
+def sieve_of_sundaram(n):
+    rawend = n // 2
+
+    raw = { x for x in range(1, rawend + 1) }
+
+    for i in range(1, rawend + 1):
+        if 2 * i + 2 * i * i > n:
+            break
+
+        for j in range(i, rawend + 1):
+            val = i + j + 2 * i * j
+            
+            if val > rawend:
+                break
+
+            if val in raw:
+                raw.remove(val)
+
+    primes = { 2 * r + 1 for r in raw }
+    primes.add(2)
+
+    return primes

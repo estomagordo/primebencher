@@ -34,6 +34,12 @@ def test_correctness_all_6k_plus_minus_1_single_looping():
     assert(res_below50 == below50)
 
 
+def test_correctness_sieve_of_sundaram():
+    res_below50 = sieve_of_sundaram(50)
+
+    assert(res_below50 == below50)
+
+
 def test_large_correctness_sieve_of_erastothenes():
     count = len(sieve_of_eratosthenes(10**6))
 
@@ -60,5 +66,11 @@ def test_large_correctness_sieve_of_atkin():
 
 def test_large_correctness_all_6k_plus_minus_1_single_looping():
     count = len(all_6k_plus_minus_1_single_looping(10**6))
+
+    assert(count == below_million_count)
+
+
+def test_large_correctness_all_sieve_of_sundaram():
+    count = len(sieve_of_sundaram(10**6))
 
     assert(count == below_million_count)
