@@ -159,10 +159,12 @@ def sieve_of_atkin(n):
 
         xsq = x * x
 
-        mult = 3
+        mult = 1
 
         while mult * xsq < n:
             is_prime[mult * xsq] = False
             mult += 2
 
     return primes
+
+print(sieve_of_atkin(10**6) - sieve_of_eratosthenes(10**6))
